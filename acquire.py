@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 
 from env import get_connection
+from sklearn.model_selection import train_test_split
 
 def get_db_connection(database):
     return get_connection(database)
@@ -66,3 +67,48 @@ def get_telco_data():
         # Cache data
         df.to_csv('telco.csv')
     return df
+
+
+
+
+
+
+seed = 42
+
+train, val_test = train_test_split(iris_df, train_size = 0.7,
+                                  random_state = seed,
+                                  stratify = iris_df.species)
+val, test = train_test_split(val_test, train_size = 0.5,
+                            random_state = seed,
+                            stratify = val_test.species)
+train.species.value_counts(normalize = True)
+val.species.value_counts(normalize = True)
+test.species.value_counts(normalize = True)
+
+
+
+seed = 42
+
+train, val_test = train_test_split(titanic_df, train_size = 0.7,
+                                  random_state = seed,
+                                  stratify = titanic_df.survived)
+val, test = train_test_split(val_test, train_size = 0.5,
+                            random_state = seed,
+                            stratify = val_test.survived)
+train.survived.value_counts(normalize = True)
+val.survived.value_counts(normalize = True)
+test.survived.value_counts(normalize = True)
+
+
+seed = 42
+
+train, val_test = train_test_split(telco_df, train_size = 0.7,
+                                  random_state = seed,
+                                  stratify = telco_df.churn)
+val, test = train_test_split(val_test, train_size = 0.5,
+                            random_state = seed,
+                            stratify = val_test.churn)
+train.churn.value_counts(normalize = True)
+val.churn.value_counts(normalize = True)
+test.churn.value_counts(normalize = True)
+
