@@ -71,7 +71,7 @@ def get_telco_data():
 
 
 
-
+'''
 
 seed = 42
 
@@ -111,4 +111,5 @@ val, test = train_test_split(val_test, train_size = 0.5,
 train.churn.value_counts(normalize = True)
 val.churn.value_counts(normalize = True)
 test.churn.value_counts(normalize = True)
+'''
 
